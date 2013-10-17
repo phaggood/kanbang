@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en" ng-app="KanbangApp">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My AngularJS App</title>
+
+    <!-- link rel="stylesheet" href="css/app.css"/ -->
+    <link rel="stylesheet" href="css/bootstrap.css"/>
+    <link rel="stylesheet" href="css/bootstrap-theme.css"/>
+
+</head>
+<body>
+<ul class="menu">
+    <li><a href="#/home">Home View</a></li>
+    <li><a href="#/extended">Extra</a></li>
+</ul>
+
+<div ng-view></div>
+
+
+<!-- In production use:
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+-->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.js"></script>
+<script src="http://code.angularjs.org/1.1.5/angular-resource.js"></script>
+<SCRIPT src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.6.0/ui-bootstrap-tpls.js"></script>
+<script src="js/webapp.js"></script>
+</body>
+</html>
