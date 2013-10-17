@@ -8,7 +8,8 @@
 
 var app = angular.module("KanbangApp", ['ngResource']);
 
-    // return promise for issues
+myApp.factory("KanbangService", function( $http) {
+    var factory = {};
     factory.getIssues = function() {
         var issues =
             $http({
@@ -18,9 +19,9 @@ var app = angular.module("KanbangApp", ['ngResource']);
         return issues;
     };
     return factory;
-})
+});
 
-function HomeCtl($scope, KanbangService){
+myapp.controller('HomeCtl', function($scope, KanbangService){
     $scope.todos = [];
     $scope.reviews = [];
     var issuepromise = KanbangService.getIssues().then(function(resp) {
@@ -30,9 +31,9 @@ function HomeCtl($scope, KanbangService){
         $scope.todos = issues.ctodo;
         $scope.reviews = issues.cReview;
     });
-}
+});
 
-function ExtendedCtl($scope, KanbangService){
+myApp.controller("ExtendedCtl", function($scope, KanbangService){
     //$scope.issues = KanbangService.query();
     //$scope.extrasets = ExtendedService.query();
-}
+});
