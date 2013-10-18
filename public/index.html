@@ -5,16 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My AngularJS App</title>
 
-    <!-- link rel="stylesheet" href="css/app.css"/ -->
+    <link rel="stylesheet" href="css/webapp.css"/>
     <link rel="stylesheet" href="css/bootstrap.css"/>
     <link rel="stylesheet" href="css/bootstrap-theme.css"/>
 
 </head>
 <body>
-<ul class="menu">
-    <li><a href="#/home">Home View</a></li>
-    <li><a href="#/extended">Extra</a></li>
-</ul>
+
+<nav class="navbar navbar-default" role="navigation">
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul class="nav navbar-nav">
+            <li><a href="#/home">Home</a></li>
+            <li><a href="#/extended">Wide</a></li>
+        </ul>
+
+    </div><!-- /.navbar-collapse -->
+</nav>
+
 
 <div ng-view></div>
 

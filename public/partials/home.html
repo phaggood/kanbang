@@ -1,9 +1,71 @@
-<h4>home view</h4>
-<ul>
-    <li ng-repeat="todo in todos">
-        <h4>{{todo.key}}</h4>
-        {{todo.status}} {{todo.summary}}{{todo.priority}}
-    </li>
-</ul>
+<!-- Body Div-->
 
-{{todos}}
+
+<div class="row-fluid">
+
+
+    <div class="span2">
+        <!--Sidebar content-->
+
+        Search: <input ng-model="searchtext">
+
+    </div>
+
+    <div class="span4">
+        <ul class="list-group">
+            <div  class="visible-xs hidden-lg tablet-misc"></div>
+            <li class="col-lg-4 ToDoPanel">
+                <ul class="list-group">
+                    <li><h4>To Do<span class="badge pull-right">{{todoCount}}</span></h4></li>
+                    <li class='list-group-item' ng-repeat="todo in todos | filter:searchtext">
+                        <a target='_blank' href={{todo.url}}>{{todo.key}}</a><br/>
+                        <span class='assignee-style'>{{todo.summary}}</span><br/>
+                        <span class='assignee-style'>Assignee: {{todo.assignee}}</span><br/>
+                        <span class='reporter-style'>Reporter: {{todo.reporter}}</span><br/>
+                        <span style='display:none'>closed-label</span>
+                        <span class='priority-style'>Priority: {{todo.priority}}</span><br/>
+                        <span class ="labelClass">{{todo.labels}}</span></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="span4">
+        <ul class="list-group">
+            <div  class="visible-xs hidden-lg tablet-misc"></div>
+            <li class="col-lg-4 InProgress">
+                <ul class="list-group">
+                    <li><h4>In Progress<span class="badge pull-right">{{progressCount}}</span></h4></li>
+                    <li class='list-group-item' ng-repeat="progress in progresslist | filter:searchtext">
+                        <a target='_blank' href={{progress.url}}>{{progress.key}}</a><br/>
+                        <span class='assignee-style'>{{progress.summary}}</span><br/>
+                        <span class='assignee-style'>Assignee: {{progress.assignee}}</span><br/>
+                        <span class='reporter-style'>Reporter: {{progress.reporter}}</span><br/>
+                        <span style='display:none'>closed-label</span>
+                        <span class='priority-style'>Priority: {{progress.priority}}</span><br/>
+                        <span class ="labelClass">{{progress.labels}}</span></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="span4">
+        <ul class="list-group">
+            <div  class="visible-xs hidden-lg tablet-misc"></div>
+            <li class="col-lg-4 Review">
+                <ul class="list-group">
+                    <li><h4>Review<span class="badge pull-right">{{reviewCount}}</span></h4></li>
+                    <li class='list-group-item' ng-repeat="review in reviews | filter:searchtext">
+                        <a target='_blank' href={{review.url}}>{{review.key}}</a><br/>
+                        <span class='assignee-style'>{{review.summary}}</span><br/>
+                        <span class='assignee-style'>Assignee: {{review.assignee}}</span><br/>
+                        <span class='reporter-style'>Reporter: {{review.reporter}}</span><br/>
+                        <span style='display:none'>closed-label</span>
+                        <span class='priority-style'>Priority: {{review.priority}}</span><br/>
+                        <span class ="labelClass">{{review.labels}}</span></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+</div>
