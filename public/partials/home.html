@@ -1,22 +1,30 @@
 <!-- Body Div-->
 
+<nav class="navbar navbar-default" role="navigation">
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul class="nav navbar-nav">
+            <button class="btn btn-success btn-mini" ng-click="defaultView()"><i class="icon-white icon-circle-arrow-right"></i>Default</button>
+            <button class="btn btn-success btn-mini" ng-click="expandedView()"><i class="icon-white icon-circle-arrow-right"></i>Wide</button>
+        </ul>
 
+    </div><!-- /.navbar-collapse -->
+</nav>
 <div class="row-fluid">
 
 
     <div class="span2">
         <!--Sidebar content-->
-
         Search: <input ng-model="searchtext">
 
     </div>
 
-    <div class="span4">
+    <div class="ng-class:colspan">
         <ul class="list-group">
             <div  class="visible-xs hidden-lg tablet-misc"></div>
-            <li class="col-lg-4 ToDoPanel">
+            <li class="ng-class:(colspan=='span4') ? 'col-lg-4 ToDoPanel' : 'col-lg-3 ToDoPanel'">
                 <ul class="list-group">
-                    <li><h4>To Do<span class="badge pull-right">{{todoCount}}</span></h4></li>
+                    <li><h4>To Do [{{todoCount}}]</h4></li>
                     <li class='list-group-item' ng-repeat="todo in todos | filter:searchtext">
                         <a target='_blank' href={{todo.url}}>{{todo.key}}</a><br/>
                         <span class='assignee-style'>{{todo.summary}}</span><br/>
@@ -30,12 +38,12 @@
         </ul>
     </div>
 
-    <div class="span4">
+    <div class="ng-class:colspan">
         <ul class="list-group">
             <div  class="visible-xs hidden-lg tablet-misc"></div>
-            <li class="col-lg-4 InProgress">
+            <li class="ng-class:(colspan=='span4') ? 'col-lg-4 InProgress' : 'col-lg-3 InProgress'">
                 <ul class="list-group">
-                    <li><h4>In Progress<span class="badge pull-right">{{progressCount}}</span></h4></li>
+                    <li><h4>In Progress [{{progressCount}}]</h4></li>
                     <li class='list-group-item' ng-repeat="progress in progresslist | filter:searchtext">
                         <a target='_blank' href={{progress.url}}>{{progress.key}}</a><br/>
                         <span class='assignee-style'>{{progress.summary}}</span><br/>
@@ -49,12 +57,12 @@
         </ul>
     </div>
 
-    <div class="span4">
+    <div class="ng-class:colspan">
         <ul class="list-group">
             <div  class="visible-xs hidden-lg tablet-misc"></div>
-            <li class="col-lg-4 Review">
+            <li class="ng-class:(colspan=='span4') ? 'col-lg-4 Review' : 'col-lg-3 Review'">
                 <ul class="list-group">
-                    <li><h4>Review<span class="badge pull-right">{{reviewCount}}</span></h4></li>
+                    <li><h4>Review [{{reviewCount}}]</h4></li>
                     <li class='list-group-item' ng-repeat="review in reviews | filter:searchtext">
                         <a target='_blank' href={{review.url}}>{{review.key}}</a><br/>
                         <span class='assignee-style'>{{review.summary}}</span><br/>
@@ -63,6 +71,25 @@
                         <span style='display:none'>closed-label</span>
                         <span class='priority-style'>Priority: {{review.priority}}</span><br/>
                         <span class ="labelClass">{{review.labels}}</span></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="ng-class:colspan;" ng-show="extendedView">
+        <ul class="list-group">
+            <div  class="visible-xs hidden-lg tablet-misc"></div>
+            <li class="col-lg-3 Closed">
+                <ul class="list-group">
+                    <li><h4>Closed [{{closedCount}}]</h4></li>
+                    <li class='list-group-item' ng-repeat="closed in closeds | filter:searchtext">
+                        <a target='_blank' href={{closed.url}}>{{closed.key}}</a><br/>
+                        <span class='assignee-style'>{{closed.summary}}</span><br/>
+                        <span class='assignee-style'>Assignee: {{closed.assignee}}</span><br/>
+                        <span class='reporter-style'>Reporter: {{closed.reporter}}</span><br/>
+                        <span style='display:none'>closed-label</span>
+                        <span class='priority-style'>Priority: {{closed.priority}}</span><br/>
+                        <span class ="labelClass">{{closed.labels}}</span></li>
                 </ul>
             </li>
         </ul>

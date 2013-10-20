@@ -20,3 +20,4 @@ app.listen(9090);
 /* API here */
 app.get('/issues', api.issues);
 
+console.log("Web server started");

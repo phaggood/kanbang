@@ -45,6 +45,12 @@ exports.issues = function(req,res) {
 function getIssueList(issues) {
     var issueList = {};
     var issueCount = issues.length;
+    // setup empty array for each status name
+    for (var key in status) {
+        console.log("key " + key);
+        issueList[key] = [];
+    }
+
     console.log("returned " + issueCount + "items");
     try {
         // build lists for each

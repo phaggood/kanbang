@@ -28,7 +28,8 @@ myapp.factory("KanbangService", function( $http) {
 });
 
 myapp.controller('HomeCtl', function($scope, KanbangService){
-    $scope.expandView = true;
+    $scope.colspan = "span4";
+    $scope.extendedView = false;
     $scope.searchtext = "";
     $scope.todos = [];
     $scope.reviews = [];
@@ -38,21 +39,30 @@ myapp.controller('HomeCtl', function($scope, KanbangService){
     $scope.progressCount = 0;
     var issuepromise = KanbangService.getIssues().then(function(resp) {
         var issues = resp.data.issues;
-        console.log("issueount " + issues.ctodo.length);
 	// should loop through statusnames here and assign to scope
         $scope.todos = issues.ctodo;
         $scope.reviews = issues.cReview;
         $scope.progresslist = issues.cProgress;
         $scope.closeds = issues.cClosed;
-        $scope.todoCount = issues.ctodo.length;
-        $scope.reviewCount = issues.cReview.length;
-        $scope.progressCount = issues.cProgress.length;
-        $scope.closedCount = issues.closeds.length;
+        $scope.todoCount = issues.ctodo == undefined ? 0 : issues.ctodo.length;
+        $scope.reviewCount = issues.cReview == undefined ? 0 : issues.cReview.length;
+        $scope.progressCount = issues.cProgress == undefined ? 0 : issues.cProgress.length;
+        $scope.closedCount = issues.cClosed == undefined ? 0 : issues.cClosed.length;
     });
 
     var clearSearch = function() {
         $scope.searchtext = "";
     }
+
+    $scope.defaultView = function() {
+        $scope.colspan = "span4";
+        $scope.extendedView = false;
+    };
+
+    $scope.expandedView = function() {
+        $scope.colspan = "span3";
+        $scope.extendedView = true;
+    };
 
 });
 
