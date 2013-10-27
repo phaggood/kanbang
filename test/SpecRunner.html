@@ -20,16 +20,15 @@
     <script src="js/webappSpec.js"></script>
 </head>
 <body>
+
 <!-- bootstrap jasmine! -->
 <script>
     var jasmineEnv = jasmine.getEnv();
 
-    // Tell it to add an Html Reporter
-    // this will add detailed HTML-formatted results
-    // for each spec ran.
+    // format report
     jasmineEnv.addReporter(new jasmine.HtmlReporter());
 
-    // Execute the tests!
+    // execute tests
     jasmineEnv.execute();
 </script>
 </body>

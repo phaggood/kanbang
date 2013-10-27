@@ -25,11 +25,11 @@
             <li class="ng-class:(colspan=='span4') ? 'col-lg-4 ToDoPanel' : 'col-lg-3 ToDoPanel'">
                 <ul class="list-group">
                     <li><h4>To Do [{{todoCount}}]</h4></li>
-                    <li class='list-group-item' ng-repeat="todo in todos | filter:searchtext">
+                    <li class='list-group-item' ng-repeat="todo in issues.ctodo | filter:searchtext">
                         <a target='_blank' href={{todo.url}}>{{todo.key}}</a><br/>
                         <span class='assignee-style'>{{todo.summary}}</span><br/>
-                        <span class='assignee-style'>Assignee: {{todo.assignee}}</span><br/>
-                        <span class='reporter-style'>Reporter: {{todo.reporter}}</span><br/>
+                        <span class='assignee-style'>Assignee: {{todo.assigneeName}}</span><br/>
+                        <span class='reporter-style'>Reporter: {{todo.reporterName}}</span><br/>
                         <span style='display:none'>closed-label</span>
                         <span class='priority-style'>Priority: {{todo.priority}}</span><br/>
                         <span class ="labelClass">{{todo.labels}}</span></li>
@@ -44,11 +44,11 @@
             <li class="ng-class:(colspan=='span4') ? 'col-lg-4 InProgress' : 'col-lg-3 InProgress'">
                 <ul class="list-group">
                     <li><h4>In Progress [{{progressCount}}]</h4></li>
-                    <li class='list-group-item' ng-repeat="progress in progresslist | filter:searchtext">
+                    <li class='list-group-item' ng-repeat="progress in issues.cProgress | filter:searchtext">
                         <a target='_blank' href={{progress.url}}>{{progress.key}}</a><br/>
                         <span class='assignee-style'>{{progress.summary}}</span><br/>
-                        <span class='assignee-style'>Assignee: {{progress.assignee}}</span><br/>
-                        <span class='reporter-style'>Reporter: {{progress.reporter}}</span><br/>
+                        <span class='assignee-style'>Assignee: {{progress.assigneeName}}</span><br/>
+                        <span class='reporter-style'>Reporter: {{progress.reporterName}}</span><br/>
                         <span style='display:none'>closed-label</span>
                         <span class='priority-style'>Priority: {{progress.priority}}</span><br/>
                         <span class ="labelClass">{{progress.labels}}</span></li>
@@ -63,11 +63,11 @@
             <li class="ng-class:(colspan=='span4') ? 'col-lg-4 Review' : 'col-lg-3 Review'">
                 <ul class="list-group">
                     <li><h4>Review [{{reviewCount}}]</h4></li>
-                    <li class='list-group-item' ng-repeat="review in reviews | filter:searchtext">
+                    <li class='list-group-item' ng-repeat="review in issues.cReview | filter:searchtext">
                         <a target='_blank' href={{review.url}}>{{review.key}}</a><br/>
                         <span class='assignee-style'>{{review.summary}}</span><br/>
-                        <span class='assignee-style'>Assignee: {{review.assignee}}</span><br/>
-                        <span class='reporter-style'>Reporter: {{review.reporter}}</span><br/>
+                        <span class='assignee-style'>Assignee: {{review.assigneeName}}</span><br/>
+                        <span class='reporter-style'>Reporter: {{review.reporterName}}</span><br/>
                         <span style='display:none'>closed-label</span>
                         <span class='priority-style'>Priority: {{review.priority}}</span><br/>
                         <span class ="labelClass">{{review.labels}}</span></li>
@@ -82,11 +82,11 @@
             <li class="col-lg-3 Closed">
                 <ul class="list-group">
                     <li><h4>Closed [{{closedCount}}]</h4></li>
-                    <li class='list-group-item' ng-repeat="closed in closeds | filter:searchtext">
+                    <li class='list-group-item' ng-repeat="closed in issues.cClosed | filter:searchtext">
                         <a target='_blank' href={{closed.url}}>{{closed.key}}</a><br/>
                         <span class='assignee-style'>{{closed.summary}}</span><br/>
-                        <span class='assignee-style'>Assignee: {{closed.assignee}}</span><br/>
-                        <span class='reporter-style'>Reporter: {{closed.reporter}}</span><br/>
+                        <span class='assignee-style'>Assignee: {{closed.assigneeName}}</span><br/>
+                        <span class='reporter-style'>Reporter: {{closed.reporterName}}</span><br/>
                         <span style='display:none'>closed-label</span>
                         <span class='priority-style'>Priority: {{closed.priority}}</span><br/>
                         <span class ="labelClass">{{closed.labels}}</span></li>

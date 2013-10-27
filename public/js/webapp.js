@@ -29,28 +29,26 @@ myapp.factory("KanbangService", function( $http) {
 
 myapp.controller('HomeCtl', function($scope, KanbangService){
     $scope.colspan = "span4";
+    $scope.priorites = [];
     $scope.extendedView = false;
+    $scope.issues = {};
     $scope.searchtext = "";
-    $scope.todos = [];
-    $scope.reviews = [];
-    $scope.progresslist = [];
     $scope.todoCount = 0;
     $scope.reviewCount = 0;
     $scope.progressCount = 0;
+
     var issuepromise = KanbangService.getIssues().then(function(resp) {
-        var issues = resp.data.issues;
+        $scope.issues = resp.data.issues;
 	// should loop through statusnames here and assign to scope
-        $scope.todos = issues.ctodo;
-        $scope.reviews = issues.cReview;
-        $scope.progresslist = issues.cProgress;
-        $scope.closeds = issues.cClosed;
-        $scope.todoCount = issues.ctodo == undefined ? 0 : issues.ctodo.length;
-        $scope.reviewCount = issues.cReview == undefined ? 0 : issues.cReview.length;
-        $scope.progressCount = issues.cProgress == undefined ? 0 : issues.cProgress.length;
-        $scope.closedCount = issues.cClosed == undefined ? 0 : issues.cClosed.length;
+        $scope.todoCount = $scope.issues.ctodo == undefined ? 0 : $scope.issues.ctodo.length;
+        $scope.reviewCount = $scope.issues.cReview == undefined ? 0 : $scope.issues.cReview.length;
+        $scope.progressCount = $scope.issues.cProgress == undefined ? 0 : $scope.issues.cProgress.length;
+        $scope.closedCount = $scope.issues.cClosed == undefined ? 0 : $scope.issues.cClosed.length;
+        // get priority list
+        $scope.priorities = ["Major","Minor","Critical"];  // KanbangService.getPriorities($scope.issues);
     });
 
-    var clearSearch = function() {
+    $scope.clearSearch = function() {
         $scope.searchtext = "";
     }
 
@@ -64,10 +62,4 @@ myapp.controller('HomeCtl', function($scope, KanbangService){
         $scope.extendedView = true;
     };
 
-});
-
-myapp.controller("ExtendedCtl", function($scope, KanbangService){
-    $scope.expandView = true;
-    //$scope.issues = KanbangService.query();
-    //$scope.extrasets = ExtendedService.query();
 });
