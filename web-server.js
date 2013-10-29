@@ -15,9 +15,9 @@ var app = express();
 app.use(express.static(__dirname + '/public'));
 app.use(express.bodyParser());
 app.use(express.methodOverride())
-app.listen(9090);
+app.listen(8080);
 
 /* API here */
 app.get('/issues', api.issues);
 
-console.log("Web server started");
+console.log("Web server started on port 8080");
