@@ -107,9 +107,9 @@ function getIssue(issue) {
         "priority" : issue.fields.priority.name,
         "assigneeDisplayName" : issue.fields.assignee.displayName,
         "assigneeName" : issue.fields.assignee.name,
+        "projectkey" :issue.fields.project.key,
         "labels" : issue.labels} ;
 //        console.log(item);
-    console.log(item);
     return item;
 }
 

@@ -27,6 +27,12 @@ myapp.factory("KanbangService", function( $http) {
     return factory;
 });
 
+
+myapp.factory("kanbangRulesService", function(){
+  // limit by
+
+});
+
 myapp.controller('HomeCtl', function($scope, KanbangService){
     $scope.colspan = "span4";
     $scope.priorites = [];
@@ -60,6 +66,16 @@ myapp.controller('HomeCtl', function($scope, KanbangService){
     $scope.expandedView = function() {
         $scope.colspan = "span3";
         $scope.extendedView = true;
+    };
+
+    // move todo to inprogress
+    $scope.startProgress = function(id){
+
+    };
+
+    // move projct from inprogress to review
+    $scope.resolve = function(id) {
+
     };
 
 });
